@@ -6,7 +6,7 @@ public class Hero extends Unit {
 	private final int EMPTY = 0;
 	private final int LUCK = 3;
 	private final int BASIC = 5;
-	private final int RECOVERY = 100;
+	private final int RECOVERY = 10;
 
 	private Random random = new Random();
 
@@ -23,6 +23,7 @@ public class Hero extends Unit {
 
 		if (number == LUCK) {
 			unit.hp -= (this.power * 2);
+			System.out.println("크리티컬!!!");
 		} else {
 			unit.hp -= this.power;
 		}
