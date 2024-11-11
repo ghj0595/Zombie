@@ -2,6 +2,6 @@ package zombie;
 
 interface Attackable {
 
-	abstract void attack();
+	public abstract void attack(Unit unit);
 
 }
