@@ -13,7 +13,7 @@ public class Hero extends Unit {
 	private int potion;
 
 	public Hero(String name, int hp, int power, int position) {
-		super(name, hp, power, position);	
+		super(name, hp, power, position);
 		this.potion = BASIC;
 	}
 
@@ -26,6 +26,7 @@ public class Hero extends Unit {
 			System.out.println("크리티컬!!!");
 		} else {
 			unit.hp -= this.power;
+			System.out.printf("%s의 공격이 %s에게 적중했다!\n", this.name, unit.name);
 		}
 	}
 
