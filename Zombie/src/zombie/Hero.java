@@ -7,15 +7,13 @@ public class Hero extends Unit {
 	private final int LUCK = 3;
 	private final int BASIC = 5;
 	private final int RECOVERY = 100;
-	private final int MAX_HP;
 
 	private Random random = new Random();
 
 	private int potion;
 
 	public Hero(String name, int hp, int power, int position) {
-		super(name, hp, power, position);
-		this.MAX_HP = hp;
+		super(name, hp, power, position);	
 		this.potion = BASIC;
 	}
 
