@@ -1,6 +1,6 @@
 package zombie;
 
-abstract class Zombie extends Unit {
+public class Zombie extends Unit {
 
 	protected final int BLOODSUCKING;
 
@@ -13,7 +13,7 @@ abstract class Zombie extends Unit {
 	public void attack(Unit unit) {
 		unit.hp -= this.power;
 		this.hp += this.BLOODSUCKING;
-		System.out.printf("%s가 생명력을 회복했습니다.[%d/%d]", this.name, this.hp, this.MAX_HP);
+		System.out.printf("%s가 생명력을 회복했습니다.[%d/%d]\n", this.name, this.hp, this.MAX_HP);
 	}
 
 }
