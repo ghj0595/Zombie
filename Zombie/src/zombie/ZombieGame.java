@@ -1,10 +1,21 @@
 package zombie;
 
 public class ZombieGame {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private static ZombieGame instance = new ZombieGame();
+	
+	public static ZombieGame getInstance() {
+		return instance;
 	}
+	
+	public void run() {
+		while(true){
+			play();
+		}
+	}
+	
+	private void play() {
+		
+	}
+
 
 }
