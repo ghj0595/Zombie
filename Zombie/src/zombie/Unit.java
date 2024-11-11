@@ -17,12 +17,14 @@ abstract public class Unit implements Attackable {
 		this.position = position;
 	}
 
-	protected void death() {
+	protected boolean death() {
 		if (this.hp <= END) {
 			this.hp = END;
-			String message = String.format("[%s가 죽었습니다.]", this.name);
+			String message = String.format("[%s를 죽였습니다!]", this.name);
 			System.out.println(message);
+			return true;
 		}
+		return false;
 	}
 
 }
