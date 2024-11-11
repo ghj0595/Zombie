@@ -6,14 +6,14 @@ public class Zombie extends Unit {
 
 	public Zombie(String name, int hp, int power, int position) {
 		super(name, hp, power, position);
-		this.BLOODSUCKING = power / 10;
+		this.BLOODSUCKING = power / 5;
 	}
 
 	@Override
 	public void attack(Unit unit) {
 		unit.hp -= this.power;
 		this.hp += this.BLOODSUCKING;
-		System.out.printf("%s가 생명력을 회복했습니다.[%d/%d]\n", this.name, this.hp, this.MAX_HP);
+		System.out.printf("%s의 흡혈공격! \n%s HP : [%d/%d]\n", this.name, this.name, this.hp, this.MAX_HP);
 	}
 
 }

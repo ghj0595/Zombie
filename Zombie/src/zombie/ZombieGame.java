@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class ZombieGame {
 	private final int RECOVERY = 1;
+	private final int END = 0;
 	private Scanner scanner = new Scanner(System.in);
 	private Random random = new Random();
 	
@@ -18,6 +19,7 @@ public class ZombieGame {
 	private Zombie zombie;
 	private Boss boss;
 	private boolean fight;
+	private boolean isRun = true;
 	
 	public void run() {
 		setGame();
@@ -39,19 +41,23 @@ public class ZombieGame {
 		if(hero.position == zombie.position) {
 			System.out.println("좀비와 마주쳤습니다!");			
 			while(!fight) {
-				fightZombie();				
+				fightZombie();
+				if(hero.hp == END) {
+					isRun = false;
+					System.out.println("GAME OVER 영웅이 죽었습니다...");
+				}
 			}
 		}
 	}
 	
 	private void fightZombie() {
 		hero.attack(zombie);
-		printUnitHp(zombie);
 		
 		if(zombie.death()) {
 			fight = true;
 			return;
 		}
+		printUnitHp(zombie);
 		
 		zombie.attack(hero);
 		printUnitHp(hero);

@@ -43,7 +43,7 @@ public class Hero extends Unit {
 			if (this.hp > MAX_HP) {
 				this.hp = MAX_HP;
 			}
-			System.out.printf("HP를 회복했습니다. [%d/%d]\n", this.hp, this.MAX_HP);
+			System.out.printf("%s가 포션을 사용해 HP를 회복했습니다. [%d/%d]\n", this.name, this.hp, this.MAX_HP);
 			potion--;
 		}
 	}
