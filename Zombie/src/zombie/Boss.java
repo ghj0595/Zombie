@@ -18,7 +18,7 @@ public class Boss extends Zombie {
 		
 		if(skil == HIDDEN) {
 			unit.hp -= unit.hp / 2;
-			System.out.printf("BOSS의 스킬이 적중했습니다! %s[%d/%d]\n", unit.name, unit.hp, unit.MAX_HP);
+			System.out.println("BOSS의 히든 스킬 발동!");
 		}
 	}
 
