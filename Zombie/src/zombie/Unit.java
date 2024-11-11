@@ -15,7 +15,7 @@ abstract public class Unit implements Attackable {
 		this.position = position;
 	}
 
-	protected void deth() {
+	protected void death() {
 		if (this.hp <= END) {
 			this.hp = END;
 			String message = String.format("[%s가 죽었습니다.]", this.name);
