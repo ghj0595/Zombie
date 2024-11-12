@@ -67,7 +67,6 @@ public class ZombieGame {
 				break;
 			}
 		}
-
 	}
 
 	private void play() {
