@@ -23,7 +23,7 @@ public class Hero extends Unit {
 
 		if (number == LUCK) {
 			unit.hp -= (this.power * 2);
-			System.out.println("크리티컬!!!");
+			System.out.printf("크리티컬! %s의 공격은 효과적이였다!\n", this.name);
 		} else {
 			unit.hp -= this.power;
 			System.out.printf("%s의 공격이 %s에게 적중했다!\n", this.name, unit.name);
