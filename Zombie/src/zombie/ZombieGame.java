@@ -74,7 +74,7 @@ public class ZombieGame {
 		slow(300);
 
 		hero.position++;
-		size++;
+		size ++;
 
 		if (hero.position == zombie.position) {
 			System.out.println("좀비와 마주쳤습니다!");
