@@ -25,7 +25,8 @@ public class ZombieGame {
 	private double warnig;
 	private boolean fight;
 	private boolean isRun = true;
-	private int count;
+	private int zombieSetCount;
+	private int bossHideCount;
 
 	public void run() {
 		setGame();
@@ -39,9 +40,10 @@ public class ZombieGame {
 		hero = new Hero(name, 200, 20, 1);
 		warnig = hero.MAX_HP * 0.7;
 
-		zombie = new Zombie("Zombie", 100, 10, 10);
+		zombie = new Zombie("Zombie", 100, 10, SIZE);
 		boss = new Boss("BIG BOSS", 500, 30, 20);
-		count++;
+		bossHideCount++;
+		System.out.println("GAME START!!");
 	}
 
 	private void play() {
@@ -54,9 +56,7 @@ public class ZombieGame {
 		if (hero.position == zombie.position) {
 			System.out.println("좀비와 마주쳤습니다!");
 			encounterZombie(zombie);
-		}
-
-		if (hero.position == boss.position) {
+		} else if (hero.position == boss.position) {
 			System.out.println("보스 등장!!!");
 			encounterZombie(boss);
 		}
@@ -65,11 +65,11 @@ public class ZombieGame {
 	private void encounterZombie(Unit unit) {
 		fight = true;
 		while (fight) {
+			recoveryHeroHp();
 			fightZombie(unit);
 			if (heroDeath()) {
 				break;
 			}
-			recoveryHeroHp();
 		}
 	}
 
@@ -96,14 +96,18 @@ public class ZombieGame {
 
 			hero.getPotion();
 			fight = false;
+			zombieSetCount++;
+			if (zombieSetCount < 3) {
+				setZombie();
+			}
 			return;
 		}
 		printUnitHp(unit);
 
 		if (unit instanceof Boss) {
-			if (unit.hp < unit.MAX_HP / 2 && count > 0) {
+			if (unit.hp < unit.MAX_HP / 2 && bossHideCount > 0) {
 				hideBoss();
-				count--;
+				bossHideCount--;
 			}
 		}
 
@@ -116,6 +120,10 @@ public class ZombieGame {
 		printUnitHp(hero);
 
 		slow(700);
+	}
+
+	private void setZombie() {
+		zombie = new Zombie("Zombie", 100, 10, SIZE * (zombieSetCount + 1));
 	}
 
 	private void hideBoss() {
