@@ -106,7 +106,7 @@ public class ZombieGame {
 
 		if (unit instanceof Boss) {
 			if (unit.hp < unit.MAX_HP / 2 && bossHideCount > 0) {
-				hideBoss();				
+				hideBoss();
 			}
 		}
 
@@ -181,20 +181,25 @@ public class ZombieGame {
 
 	private Object input(int type, String message) {
 		System.out.println(message + " : ");
-		String name = "";
-		if (type == STRING) {
-			name = scanner.nextLine();
-			return name;
-		} else if (type == NUMBER) {
+		String input = "";
+
+		switch (type) {
+		case STRING:
+			while (input.equals(""))
+				input = scanner.nextLine();
+			return input;
+		case NUMBER:
+			int number = 0;
 			try {
-				name = scanner.nextLine();
-				Integer number = Integer.parseInt(name);
+				input = scanner.nextLine();
+				number = Integer.parseInt(input);
 				return number;
 			} catch (Exception e) {
 				System.err.println("숫자를 입력해주세요.");
 			}
+		default:
+			return null;
 		}
-		return null;
 	}
 
 	private void slow(int speed) {
