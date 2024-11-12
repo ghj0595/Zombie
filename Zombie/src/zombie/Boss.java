@@ -19,7 +19,7 @@ public class Boss extends Zombie {
 
 		if (skil == HIDDEN) {
 			unit.hp -= unit.hp / 3;
-			System.out.println("BOSS의 히든 스킬 발동!");
+			System.out.println("BOSS에게 치명상을 입었습니다!!");
 		}
 	}
 
@@ -32,7 +32,7 @@ public class Boss extends Zombie {
 			System.out.println("공격이 효과적이였다!");
 			System.out.printf("%s HP : [%d/%d]\n", this.name, this.hp, this.MAX_HP);
 		} else {
-			this.hp += 200;
+			this.hp += 100;
 			System.out.println("BOSS를 찾지 못했습니다...");
 			System.out.println("BOSS가 HP를 회복합니다.");
 			System.out.printf("%s HP : [%d/%d]\n", this.name, this.hp, this.MAX_HP);
