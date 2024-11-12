@@ -47,6 +47,11 @@ public class Hero extends Unit {
 			potion--;
 		}
 	}
+	
+	public void getPotion() {
+		this.potion += BASIC;
+		System.out.println("포션을 획득했습니다!");
+	}
 
 	public boolean dodge(int number) {
 		if (number == LUCK) {
