@@ -10,3 +10,6 @@
 
 >#### Class Diagram
 ![image](Zombie/image/좀비게임.png)
+
+>#### Demo
+![좀비게임 demo](https://github.com/user-attachments/assets/97eaaa3b-38a1-4ea0-ad1f-5ddd5874f78c)
