@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class ZombieGame {
 	private final int END = 0;
+
 	private Scanner scanner = new Scanner(System.in);
 	private Random random = new Random();
 
@@ -17,13 +18,14 @@ public class ZombieGame {
 	private Zombie zombie;
 	private Hero hero;
 	private Boss boss;
+	private int size = 10;
 	private double warnig;
 	private boolean fight;
 	private boolean isRun = true;
 
 	public void run() {
 		setGame();
-		while (isRun) {
+		while (isRun) {			
 			play();
 		}
 	}
@@ -33,12 +35,16 @@ public class ZombieGame {
 		hero = new Hero(name, 200, 10, 1);
 		warnig = hero.MAX_HP * 0.7;
 
-		zombie = new Zombie("Zombie", 50, 10, 5);
-		boss = new Boss("BIG BOSS", 500, 30, 10);
+		zombie = new Zombie("Zombie", 50, 10, 10);
+		boss = new Boss("BIG BOSS", 500, 30, 20);
 	}
 
 	private void play() {
+		printMap();
+		slow(300);
+
 		hero.position++;
+		size ++;
 
 		if (hero.position == zombie.position) {
 			System.out.println("좀비와 마주쳤습니다!");
@@ -66,7 +72,7 @@ public class ZombieGame {
 		if (hero.hp <= END) {
 			hero.hp = END;
 			isRun = false;
-			System.out.println("GAME OVER 영웅이 죽었습니다...");
+			System.out.println("'GAME OVER' 영웅이 죽었습니다...");
 			return true;
 		}
 		return false;
@@ -89,7 +95,7 @@ public class ZombieGame {
 		unit.attack(hero);
 		printUnitHp(hero);
 
-		slow();
+		slow(600);
 	}
 
 	private void recoveryHeroHp() {
@@ -103,15 +109,30 @@ public class ZombieGame {
 		System.out.printf("%s HP : [%d/%d]\n", unit.name, unit.hp, unit.MAX_HP);
 	}
 
+	private void printMap() {
+		for (int i = hero.position; i < size; i++) {
+			if (i == hero.position) {
+				System.out.print("_옷");
+			} else if (i == zombie.position) {
+				System.out.print("_OTL");
+			} else if (i == boss.position) {
+				System.out.print("_◀TL");
+			} else {
+				System.out.print("_");
+			}
+		}
+		System.out.println();
+	}
+
 	private String input(String message) {
 		System.out.println(message + " : ");
 		String name = scanner.nextLine();
 		return name;
 	}
 
-	private void slow() {
+	private void slow(int speed) {
 		try {
-			Thread.sleep(600);
+			Thread.sleep(speed);
 		} catch (Exception e) {
 		}
 	}
