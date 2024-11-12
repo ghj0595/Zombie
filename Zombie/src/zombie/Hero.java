@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Hero extends Unit {
 	private final int EMPTY = 0;
-	private final int LUCK = 3;
+	private final int LUCK = 1;
 	private final int BASIC = 5;
-	private final int RECOVERY = 10;
+	private final int RECOVERY = 50;
 
 	private Random random = new Random();
 
@@ -19,7 +19,7 @@ public class Hero extends Unit {
 
 	@Override
 	public void attack(Unit unit) {
-		int number = random.nextInt(5);
+		int number = random.nextInt(3);
 
 		if (number == LUCK) {
 			unit.hp -= (this.power * 2);
@@ -46,6 +46,14 @@ public class Hero extends Unit {
 			System.out.printf("%s가 포션을 사용해 HP를 회복했습니다. [%d/%d]\n", this.name, this.hp, this.MAX_HP);
 			potion--;
 		}
+	}
+
+	public boolean dodge(int number) {
+		if (number == LUCK) {
+			System.out.printf("%s가 좀비의 공격을 피했습니다!\n", this.name);
+			return true;
+		}
+		return false;
 	}
 
 }
