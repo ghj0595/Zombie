@@ -106,8 +106,7 @@ public class ZombieGame {
 
 		if (unit instanceof Boss) {
 			if (unit.hp < unit.MAX_HP / 2 && bossHideCount > 0) {
-				hideBoss();
-				bossHideCount--;
+				hideBoss();				
 			}
 		}
 
@@ -134,14 +133,19 @@ public class ZombieGame {
 
 		int select = (int) input(NUMBER, "번호 선택") - 1;
 
+		if (select < 0 || select >= SIZE) {
+			System.out.println("번호를 다시 확인해주세요.");
+			return;
+		}
+
 		boss.hide(select);
+		bossHideCount--;
 	}
 
 	private void recoveryHeroHp() {
 		if (hero.hp < warnig) {
 			hero.healing();
 		}
-
 	}
 
 	private void printHideBoss() {
