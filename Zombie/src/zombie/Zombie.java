@@ -6,7 +6,7 @@ public class Zombie extends Unit {
 
 	public Zombie(String name, int hp, int power, int position) {
 		super(name, hp, power, position);
-		this.BLOODSUCKING = power / 5;
+		this.BLOODSUCKING = power / 10;
 	}
 
 	@Override
