@@ -6,4 +6,4 @@
 - 보스 좀비를 물리치고 뺏긴 백신을 확보하여 좀비 바이러스를 치료한다.
 
 >#### Class Diagram
-![image](https://github.com/ghj0595/Zombie/commit/61f84a0261c5d9e79507ba92fb66736a722f4798)
+![image](Zombie/image/좀비게임.png)
