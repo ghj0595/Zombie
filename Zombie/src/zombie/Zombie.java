@@ -13,7 +13,7 @@ public class Zombie extends Unit {
 	public void attack(Unit unit) {
 		unit.hp -= this.power;
 		this.hp += this.BLOODSUCKING;
-		System.out.printf("%s의 흡혈공격! \n%s HP : [%d/%d]\n", this.name, this.name, this.hp, this.MAX_HP);
+		System.out.printf("%s의 흡혈공격! \n", this.name);
 	}
 
 }
