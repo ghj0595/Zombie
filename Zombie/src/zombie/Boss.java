@@ -26,15 +26,15 @@ public class Boss extends Zombie {
 	public void hide(int number) {
 		int location = random.nextInt(SIZE);
 
-		for (int i = 0; i < SIZE; i++) {
-			System.out.print(" ■");
-		}
-		System.out.println();
-
 		if (number == location) {
 			System.out.println("BOSS를 찾았다! 급소타격!!");
 			this.hp -= this.hp / 2;
 			System.out.println("공격이 효과적이였다!");
+			System.out.printf("%s HP : [%d/%d]\n", this.name, this.hp, this.MAX_HP);
+		} else {
+			this.hp += 200;
+			System.out.println("BOSS를 찾지 못했습니다...");
+			System.out.println("BOSS가 HP를 회복합니다.");
 			System.out.printf("%s HP : [%d/%d]\n", this.name, this.hp, this.MAX_HP);
 		}
 	}
