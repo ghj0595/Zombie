@@ -9,6 +9,9 @@ public class ZombieGame {
 	private final int STRING = 1;
 	private final int NUMBER = 2;
 
+	private final String START = "1";
+	private final String EXIT = "2";
+
 	private Scanner scanner = new Scanner(System.in);
 	private Random random = new Random();
 
@@ -24,18 +27,20 @@ public class ZombieGame {
 	private int size = 10;
 	private double warnig;
 	private boolean fight;
-	private boolean isRun = true;
+	private boolean isRun;
 	private int zombieSetCount;
 	private int bossHideCount;
 
 	public void run() {
 		setGame();
+		printMenu();
 		while (isRun) {
 			play();
 		}
 	}
 
 	private void setGame() {
+		System.out.println("WELCOM!");
 		String name = (String) input(STRING, "Hero 이름 입력");
 		hero = new Hero(name, 200, 20, 1);
 		warnig = hero.MAX_HP * 0.7;
@@ -43,7 +48,26 @@ public class ZombieGame {
 		zombie = new Zombie("Zombie", 100, 10, SIZE);
 		boss = new Boss("BIG BOSS", 500, 30, 20);
 		bossHideCount++;
-		System.out.println("GAME START!!");
+	}
+
+	private void printMenu() {
+		System.out.println("몰려드는 좀비들을 처치하고 \n백신을 얻기위해 모험을 시작하시겠습니까?");
+		System.out.println("1.시작");
+		System.out.println("2.종료");
+
+		while (true) {
+			String select = (String) input(STRING, "번호 선택");
+			if (select.equals(START)) {
+				System.out.printf("%s님 모험을 시작합니다.\n", hero.name);
+				System.out.println("GAME START!!");
+				isRun = true;
+				break;
+			} else if (select.equals(EXIT)) {
+				System.out.println("게임이 종료됩니다.");
+				break;
+			}
+		}
+
 	}
 
 	private void play() {
@@ -90,6 +114,7 @@ public class ZombieGame {
 			if (unit instanceof Boss) {
 				isRun = false;
 				fight = false;
+				System.out.println("백신을 확보했습니다!");
 				System.out.println("GAME CLEAR!!");
 				return;
 			}
