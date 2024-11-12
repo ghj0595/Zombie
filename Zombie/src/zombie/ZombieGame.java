@@ -24,7 +24,7 @@ public class ZombieGame {
 	public void run() {
 		setGame();
 		while (isRun) {
-			play();			
+			play();
 		}
 	}
 
@@ -81,9 +81,14 @@ public class ZombieGame {
 		}
 		printUnitHp(unit);
 
+		int luckyNumber = random.nextInt(2);
+		if (hero.dodge(luckyNumber)) {
+			return;
+		}
+
 		unit.attack(hero);
 		printUnitHp(hero);
-		
+
 		slow();
 	}
 
@@ -103,11 +108,11 @@ public class ZombieGame {
 		String name = scanner.nextLine();
 		return name;
 	}
-	
+
 	private void slow() {
 		try {
 			Thread.sleep(600);
-		} catch (Exception e) {		
+		} catch (Exception e) {
 		}
 	}
 
