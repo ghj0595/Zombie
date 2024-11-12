@@ -25,6 +25,7 @@ public class ZombieGame {
 	private double warnig;
 	private boolean fight;
 	private boolean isRun = true;
+	private int count;
 
 	public void run() {
 		setGame();
@@ -35,11 +36,12 @@ public class ZombieGame {
 
 	private void setGame() {
 		String name = (String) input(STRING, "Hero 이름 입력");
-		hero = new Hero(name, 200, 10, 1);
+		hero = new Hero(name, 200, 20, 1);
 		warnig = hero.MAX_HP * 0.7;
 
 		zombie = new Zombie("Zombie", 100, 10, 10);
 		boss = new Boss("BIG BOSS", 500, 30, 20);
+		count++;
 	}
 
 	private void play() {
@@ -85,6 +87,13 @@ public class ZombieGame {
 		hero.attack(unit);
 
 		if (unit.death()) {
+			if (unit instanceof Boss) {
+				isRun = false;
+				fight = false;
+				System.out.println("GAME CLEAR!!");
+				return;
+			}
+
 			hero.getPotion();
 			fight = false;
 			return;
@@ -92,8 +101,9 @@ public class ZombieGame {
 		printUnitHp(unit);
 
 		if (unit instanceof Boss) {
-			if (unit.hp < unit.MAX_HP / 2) {
+			if (unit.hp < unit.MAX_HP / 2 && count > 0) {
 				hideBoss();
+				count--;
 			}
 		}
 
